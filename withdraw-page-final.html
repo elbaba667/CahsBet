@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>وكيل سحب وإيداع</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form, .wallet-cards {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px auto;
+      max-width: 700px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .wallet-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .wallet-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .wallet-card img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .wallet-card p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    #app-info {
+      display:none;
+      background:#f9f9f9;
+      border:1px solid #ccc;
+      padding:10px;
+      margin-top:10px;
+      border-radius:8px;
+      position:relative;
+    }
+    #app-info span {
+      position:absolute;
+      top:5px;
+      left:10px;
+      cursor:pointer;
+      color:red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>طلب سحب</h2>
+  <form>
+    <label>اسمك:</label>
+    <input type="text" required />
+
+    <label>رقم حسابك على الموقع:</label>
+    <input type="text" required />
+
+    <label>المبلغ المطلوب سحبه:</label>
+    <input type="number" required />
+
+    <label>رقم المحفظة المستلمة:</label>
+    <input type="text" required />
+
+    <label>نوع المحفظة:</label>
+    <select required>
+      <option value="">-- اختر --</option>
+      <option>فودافون كاش</option>
+      <option>اتصالات كاش</option>
+      <option>بايير</option>
+      <option>USDT</option>
+    </select>
+
+    <label>اختر التطبيق الذي تريد السحب منه:</label>
+    <select id="app-select" onchange="toggleAppInfo()" required>
+      <option value="">-- اختر --</option>
+      <option value="DB BET">DB BET</option>
+      <option value="1XBET">1XBET</option>
+      <option value="MELBET">MELBET</option>
+      <option value="WINWIN">WINWIN</option>
+      <option value="XPARI BET">XPARI BET</option>
+    </select>
+
+    <div id="app-info">
+      <span onclick="document.getElementById('app-info').style.display='none'">X</span>
+      <p><strong>اسم المدينة:</strong> Khusus</p>
+      <p><strong>اسم الشارع:</strong> babaElmagal(wallet)</p>
+    </div>
+
+    <label>قم بإرسال كود السحب هنا:</label>
+    <input type="text" required />
+
+    <label>أرفق صورة لعملية التحويل:</label>
+    <input type="file" accept="image/*" required />
+
+    
+    <label>ما هي الشركة التي تريد الشحن بها؟</label>
+    <select required>
+      <option value="">-- اختر --</option>
+      <option>DBBET</option>
+      <option>WINWIN</option>
+      <option>1XBET</option>
+      <option>MELBET</option>
+      <option>XPARIBET</option>
+    </select>
+
+    <label>رقم الحساب الذي تريد الإيداع به:</label>
+    <input type="text" placeholder="مثال: 123456" required />
+<button type="submit">إرسال الطلب</button>
+  </form>
+
+  <h2>أرقام المحافظ للتحويل</h2>
+  <div class="wallet-cards">
+    <div class="wallet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Vodafone_2017_logo.svg/1200px-Vodafone_2017_logo.svg.png" alt="Vodafone" />
+      <p><strong>فودافون كاش</strong></p>
+      <p>01066070695</p>
+      <input type="file" accept="image/*" title="أرفق سكرين شوت لفودافون" />
+    <label>رقم الهاتف الذي تم التحويل منه:</label>
+    <input type="text" placeholder="مثال: 010xxxxxxx" required />
+    </div>
+
+    <div class="wallet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Etisalat_Logo.png" alt="Etisalat" />
+      <p><strong>اتصالات كاش</strong></p>
+      <p>01124725116</p>
+      <input type="file" accept="image/*" title="أرفق سكرين شوت لاتصالات" />
+    <label>رقم الهاتف الذي تم التحويل منه:</label>
+    <input type="text" placeholder="مثال: 011xxxxxxx" required />
+    <div style="text-align: center; width: 100%; margin-top: 20px;">
+      <button type="submit">إرسال بيانات التحويل</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleAppInfo() {
+      const selectedApp = document.getElementById('app-select').value;
+      const appInfo = document.getElementById('app-info');
+      if (selectedApp) {
+        appInfo.style.display = 'block';
+      } else {
+        appInfo.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
